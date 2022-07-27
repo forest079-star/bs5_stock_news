@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <title>Finance</title>
+  </head>
+  <body class="bg-dark">
+    <div class="container">
+      <!-- 導覽列 Header -->
+      <header
+        class="h-header d-flex justify-content-between align-items-center mt-3"
+      >
+        <h1 class="fs-5 fw-bold text-white">BRUCE FINANCE</h1>
+        <button
+          class="btn btn-outline-light"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample"
+          aria-controls="offcanvasExample"
+        >
+          TRADE
+        </button>
+      </header>
+
+      <!-- 側邊攔 -->
+      <div
+        class="offcanvas offcanvas-end bg-card text-white"
+        tabindex="-1"
+        id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel"
+      >
+        <div class="offcanvas-header d-flex align-items-center">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">TRADE</h5>
+          <button
+            type="button"
+            class="btn"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="white"
+              class="bi bi-x"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="mb-3">
+            <label for="amountInput" class="form-label">Amount</label>
+            <input
+              type="text"
+              class="form-control h-form-item"
+              id="amountInput"
+              placeholder="Amount"
+              aria-describedby="amout"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="amountInput" class="form-label">Price</label>
+            <input
+              type="text"
+              class="form-control h-form-item"
+              id="priceInput"
+              placeholder="Price"
+              aria-describedby="price"
+            />
+          </div>
+          <div class="mb-3">
+            <button type="button" class="btn btn-success w-100 h-form-item">
+              BUY
+            </button>
+          </div>
+          <div class="mb-3">
+            <button type="button" class="btn btn-danger w-100 h-form-item">
+              SELL
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 交易圖表 -->
+      <div class="card w-100 h-chart bg-card mt-3">
+        <div class="card-body">
+          <!-- TradingView Widget BEGIN -->
+          <div class="tradingview-widget-container">
+            <div id="tradingview_d47cf"></div>
+            <div class="tradingview-widget-copyright">
+              <a
+                href="https://www.tradingview.com/symbols/AAPL/"
+                rel="noopener"
+                target="_blank"
+                ><span class="blue-text">Apple</span></a
+              >
+              by TradingView
+            </div>
+            <script
+              type="text/javascript"
+              src="https://s3.tradingview.com/tv.js"
+            ></script>
+            <script type="text/javascript">
+              new TradingView.MediumWidget({
+                symbols: [
+                  ["Apple", "AAPL|1D"],
+                  ["Google", "GOOGL|1D"],
+                  ["Microsoft", "MSFT|1D"],
+                ],
+                chartOnly: false,
+                width: "100%",
+                height: "100%",
+                locale: "en",
+                colorTheme: "dark",
+                isTransparent: true,
+                autosize: true,
+                showVolume: false,
+                hideDateRanges: false,
+                scalePosition: "no",
+                scaleMode: "Normal",
+                fontFamily: "Trebuchet MS, sans-serif",
+                noTimeScale: false,
+                valuesTracking: "1",
+                chartType: "area",
+                fontColor: "#787b86",
+                gridLineColor: "rgba(66, 66, 66, 0.06)",
+                lineColor: "#2962ff",
+                topColor: "rgba(41, 98, 255, 0.3)",
+                bottomColor: "rgba(41, 98, 255, 0)",
+                lineWidth: 3,
+                container_id: "tradingview_d47cf",
+              });
+            </script>
+          </div>
+          <!-- TradingView Widget END -->
+        </div>
+      </div>
+
+      <!-- 歷史紀錄 -->
+      <div class="card w-100 bg-card mt-3">
+        <div class="card-body">
+         <div class="table-responsive">
+            <table class="table table-borderless text-white text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Stock</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Operation</th>
+                  <th scope="col">Data</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AAPL</td>
+                  <td>190</td>
+                  <td class="text-success">BUY</td>
+                  <td>2021/12/31 00:00:00</td>
+                </tr>
+                <tr>
+                  <td>AAPL</td>
+                  <td>190</td>
+                  <td class="text-danger">SELL</td>
+                  <td>2021/12/31 00:00:00</td>
+                </tr>
+                <tr>
+                  <td>AAPL</td>
+                  <td>190</td>
+                  <td class="text-danger">SELL</td>
+                  <td>2021/12/31 00:00:00</td>
+                </tr>
+                <tr>
+                  <td>AAPL</td>
+                  <td>190</td>
+                  <td class="text-danger">SELL</td>
+                  <td>2021/12/31 00:00:00</td>
+                </tr>
+              </tbody>
+            </table>
+         </div>
+        </div>
+      </div>
+
+      <!-- 新聞列表 -->
+      <div class="card w-100 bg-card mt-3 mb-3">
+        <div class="card-body">
+          <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-card text-white" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">APPLE news title</h5>
+                <small class="text-muted">3 days ago</small>
+              </div>
+              <p class="mb-1">Some placeholder content in a paragraph.</p>
+              <small class="text-muted">And some small print.</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-card text-white" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">APPLE news title</h5>
+                <small class="text-muted">3 days ago</small>
+              </div>
+              <p class="mb-1">Some placeholder content in a paragraph.</p>
+              <small class="text-muted">And some small print.</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-card text-white" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">APPLE news title</h5>
+                <small class="text-muted">3 days ago</small>
+              </div>
+              <p class="mb-1">Some placeholder content in a paragraph.</p>
+              <small class="text-muted">And some small print.</small>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
